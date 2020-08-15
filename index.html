@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Sissors</title>
+</head>
+<body>
+    
+<script>
+
+// Computer's random choice function
+function computerPlay(){
+   let randomNumber = Math.random();
+    if (randomNumber >= 0.666) {
+        return "rock";
+    } else if (randomNumber >= 0.333) {
+        return "paper";
+    } else {
+        return "sissors";
+    }
+};
+
+// Single Game Function
+let score = 0;
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return `You tied!  You both picked ${computerSelection}` 
+    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        return `You lost!  You picked ${playerSelection} and the computer picked ${computerSelection}` 
+    } else if (playerSelection === 'rock' && computerSelection === 'sissors') {
+        score = score + 1;
+        return `You won!  You picked ${playerSelection} and the computer picked ${computerSelection}`;
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        score = score + 1;
+        return `You won!  You picked ${playerSelection} and the computer picked ${computerSelection}`;
+    } else if (playerSelection === 'paper' && computerSelection === 'sissors') {
+        return `You lost!  You picked ${playerSelection} and the computer picked ${computerSelection}` 
+    } else if (playerSelection === 'sissors' && computerSelection === 'rock') {
+        return `You lost!  You picked ${playerSelection} and the computer picked ${computerSelection}` 
+    } else if (playerSelection === 'sissors' && computerSelection === 'paper') {
+        score = score + 1;
+        return `You won!  You picked ${playerSelection} and the computer picked ${computerSelection}` ;
+        
+    }
+};
+
+//Run single game
+for (i = 0; i < 5; i++){
+let playerSelection = prompt("Choose rock, paper, or sissors:").toLowerCase();
+if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'sissors') {
+    let computerSelection = computerPlay();
+    let singleGame = playRound();
+    console.log(playRound(playerSelection, computerSelection))
+} else {
+    playerSelection = prompt("Try again. Choose rock, paper, or sissors:")
+    let computerSelection = computerPlay();
+    let singleGame = playRound();
+    console.log(playRound(playerSelection, computerSelection))
+}
+};
+
+if (score === 5) {
+    console.log(`You won ${score} out of 5 games.  You're incredible!`);
+} else if (score === 4) {
+    console.log(`You won ${score} out of 5 games.  That's pretty great!`);
+} else if (score === 3) {
+    console.log(`You won ${score} out of 5 games.  You're prety good!`);
+} else if (score === 2) {
+    console.log(`You won ${score} out of 5 games.  I've seen better.`);
+} else if (score === 1) {
+    console.log(`You won ${score} out of 5 games.  You need practice`);
+} else {
+    console.log(`You won ${score} out of 5 games.  That was pitiful!`);
+};
+
+</script>
+
+
+</body>
+</html>
